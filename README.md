@@ -51,3 +51,4 @@ git switch -c break-smoke
 sed -i '' 's/REPLICAS=2/REPLICAS=two/' apps/hello/config.env
 git commit -am "break smoke on purpose"
 ```
+# superseded test 1792058705
