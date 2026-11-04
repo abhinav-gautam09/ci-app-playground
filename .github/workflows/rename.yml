@@ -1,0 +1,7 @@
+name: rename
+on: pull_request
+jobs:
+  pipeline:
+    runs-on: [self-hosted, no-such-runner]
+    steps:
+      - run: true
