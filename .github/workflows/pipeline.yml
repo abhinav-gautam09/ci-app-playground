@@ -1,0 +1,22 @@
+name: pipeline
+on: pull_request
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - id: checks
+        run: false
+      - id: app
+        if: always()
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+      - if: always()
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: >
+          gh api repos/${{ github.repository }}/statuses/${{ github.event.pull_request.head.sha }}
+          -f context=ci-validate
+          -f state=${{ steps.checks.outcome == 'success' && 'success' || 'failure' }}
+          -f description="posted from GitHub Actions through the App"
