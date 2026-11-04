@@ -1,0 +1,7 @@
+name: conflict-test
+on: pull_request
+jobs:
+  ci-validate:
+    runs-on: [self-hosted, no-such-runner]
+    steps:
+      - run: true
