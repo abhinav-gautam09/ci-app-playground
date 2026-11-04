@@ -1,0 +1,7 @@
+name: conflict-test
+on: pull_request
+jobs:
+  ci-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 3500
