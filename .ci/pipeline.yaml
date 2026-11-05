@@ -1,3 +1,4 @@
-kind: demo
-required:
-  - smoke
+components:
+  - {name: alpha, kind: terraform, path: a}
+  - {name: beta, kind: terraform, path: b}
+required: [alpha/terraform-fmt]
